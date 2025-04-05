@@ -1,0 +1,48 @@
+//SQL
+CREATE TABLE users(
+	user_id INT AUTO_INCREMENT PRIMARY KEY, 
+	first_name VARCHAR(255) NOT NULL, 
+	middle_name VARCHAR(255) NULL, 
+	last_name VARCHAR(255) NOT NULL, 
+	mobile_number VARCHAR(255) NOT NULL, 
+	email VARCHAR(255) UNIQUE NOT NULL,
+	password VARCHAR(255) NOT NULL, 
+	role ENUM('Admin', 'Guest') NOT NULL
+);
+
+CREATE TABLE skills(
+	skill_id INT AUTO_INCREMENT PRIMARY KEY,
+	skill_name VARCHAR(255) NOT NULL,
+	skill_category ENUM('Programming Language', 'Frontend Technology', 'Backend Technology', 		'Database', 'DevOps & Cloud', 'Other') NOT NULL, 
+	skill_level ENUM('Fundamental', 'Competent', 'Proficient', 'Master') NOT NULL, 
+	skill_description VARCHAR(255) NOT NULL,
+	skill_image_path VARCHAR(255),
+	user_id_fk INT,
+	FOREIGN KEY(user_id_fk) REFERENCES users(user_id) ON DELETE CASCADE
+);
+
+CREATE TABLE projects(
+	project_id INT AUTO_INCREMENT PRIMARY KEY,
+	project_title VARCHAR(255) NOT NULL,
+	project_description VARCHAR(255) NOT NULL,
+	project_image_path VARCHAR(255),
+	user_id_fk INT,
+	FOREIGN KEY(user_id_fk) REFERENCES users(user_id) ON DELETE CASCADE
+);
+
+CREATE TABLE certificates(
+	certificate_id INT AUTO_INCREMENT PRIMARY KEY, 
+	certificate_name VARCHAR(255) NOT NULL, 
+	certificate_description VARCHAR(255) NOT NULL,
+	certificate_image_path VARCHAR(255),
+	user_id_fk INT, 
+	FOREIGN KEY(user_id_fk) REFERENCES users(user_id) ON DELETE CASCADE
+);
+
+CREATE TABLE social_links (
+    	link_id INT AUTO_INCREMENT PRIMARY KEY,
+    	platform_name VARCHAR(255) NOT NULL,
+    	profile_link VARCHAR(255) NOT NULL,
+	user_id_fk INT,
+    	FOREIGN KEY (user_id_fk) REFERENCES users(user_id) ON DELETE CASCADE
+);

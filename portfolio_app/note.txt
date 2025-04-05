@@ -1,0 +1,24 @@
+Portfolio App
+
+Users/Roles:
+-Admin
+-Guest
+
+Features:
+-Login
+-Guest View
+-Dashboard
+-Dynamic Skills
+-CRUD Skills
+-CRUD Projects
+-Certifications
+-Work Experience
+-Logout
+-Settings
+
+Tables:
+-User
+-Skills
+-Projects
+-Certifications
+-Work Experience
